@@ -1,0 +1,1828 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aqeela Fathya Najwa - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cream: #FFF8F0;
+            --peach: #FFDAB9;
+            --rose: #D4A5A5;
+            --mauve: #9A7B8C;
+            --chocolate: #6B4D57;
+            --espresso: #3E2723;
+            --gold: #E6C39C;
+            --blush: #F4E4D7;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--blush) 50%, var(--peach) 100%);
+            color: var(--espresso);
+            overflow-x: hidden;
+            cursor: none;
+        }
+
+        /* Custom Cursor */
+        .custom-cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--rose);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: all 0.1s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--mauve);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: all 0.15s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .custom-cursor.hover {
+            width: 40px;
+            height: 40px;
+            background: rgba(212, 165, 165, 0.2);
+            border-color: var(--mauve);
+        }
+
+        /* Animated Background */
+        .bg-decoration {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .floating-shape {
+            position: absolute;
+            opacity: 0.15;
+            animation: float 20s infinite ease-in-out;
+            filter: blur(2px);
+        }
+
+        .shape1 { 
+            width: 300px; 
+            height: 300px; 
+            background: radial-gradient(circle, var(--rose), var(--peach));
+            border-radius: 50%; 
+            top: 10%; 
+            left: 5%; 
+        }
+        
+        .shape2 { 
+            width: 200px; 
+            height: 200px; 
+            background: radial-gradient(circle, var(--mauve), var(--gold));
+            border-radius: 50%; 
+            bottom: 20%; 
+            right: 10%; 
+            animation-delay: 5s; 
+        }
+        
+        .shape3 { 
+            width: 150px; 
+            height: 150px; 
+            background: radial-gradient(circle, var(--gold), var(--blush));
+            border-radius: 50%; 
+            top: 60%; 
+            left: 15%; 
+            animation-delay: 10s; 
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+            25% { transform: translate(50px, -50px) rotate(90deg) scale(1.1); }
+            50% { transform: translate(-30px, 30px) rotate(180deg) scale(0.9); }
+            75% { transform: translate(30px, 50px) rotate(270deg) scale(1.05); }
+        }
+
+        /* Particles */
+        .particle {
+            position: fixed;
+            width: 4px;
+            height: 4px;
+            background: var(--rose);
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.6;
+            animation: particleFloat 8s infinite;
+        }
+
+        @keyframes particleFloat {
+            0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
+        }
+
+        /* Scroll Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--rose), var(--mauve), var(--gold));
+            z-index: 9999;
+            transition: width 0.2s ease;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            padding: 1rem 5%;
+            box-shadow: 0 5px 25px rgba(62, 39, 35, 0.1);
+            z-index: 1000;
+            transition: all 0.4s ease;
+        }
+
+        nav.scrolled {
+            padding: 0.7rem 5%;
+            box-shadow: 0 8px 35px rgba(62, 39, 35, 0.15);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--rose), var(--mauve));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: logoGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes logoGlow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.3); }
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 0.3rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-links li {
+            position: relative;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: var(--chocolate);
+            padding: 0.6rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 0.95rem;
+            display: block;
+        }
+
+        .nav-links li a:hover, .nav-links li a.active {
+            background: linear-gradient(135deg, var(--rose), var(--mauve));
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Dropdown Menu - FIXED */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 200px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border-radius: 15px;
+            overflow: hidden;
+            margin-top: 0.5rem;
+            z-index: 1001;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .nav-links li:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+            animation: slideDown 0.3s ease;
+        }
+
+        /* Keep dropdown visible when hovering over it */
+        .dropdown-content:hover {
+            display: block;
+            opacity: 1;
+        }
+
+        .nav-links li {
+            position: relative;
+        }
+
+        .has-dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .dropdown-content a {
+            padding: 1rem 1.5rem;
+            display: block;
+            color: var(--chocolate);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-radius: 0;
+        }
+
+        .dropdown-content a:hover {
+            background: linear-gradient(135deg, var(--blush), var(--peach));
+            transform: translateX(5px);
+        }
+
+        .burger-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            z-index: 1002;
+        }
+
+        .burger-menu span {
+            width: 30px;
+            height: 3px;
+            background: var(--chocolate);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .burger-menu.active span:nth-child(1) { transform: rotate(45deg) translate(8px, 8px); }
+        .burger-menu.active span:nth-child(2) { opacity: 0; }
+        .burger-menu.active span:nth-child(3) { transform: rotate(-45deg) translate(8px, -8px); }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 70px;
+            right: -100%;
+            width: 300px;
+            height: calc(100vh - 70px);
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            box-shadow: -5px 0 30px rgba(0, 0, 0, 0.2);
+            transition: right 0.4s ease;
+            overflow-y: auto;
+            padding: 2rem;
+            z-index: 999;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 1rem;
+            color: var(--chocolate);
+            text-decoration: none;
+            border-radius: 10px;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu a:hover {
+            background: linear-gradient(135deg, var(--blush), var(--peach));
+            transform: translateX(5px);
+        }
+
+        section {
+            min-height: 100vh;
+            padding: 120px 8% 80px;
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            animation: fadeInSection 0.8s ease forwards;
+        }
+
+        @keyframes fadeInSection {
+            to { opacity: 1; }
+        }
+
+        /* Reveal on Scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            font-size: 3rem;
+            color: var(--chocolate);
+            text-align: center;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            opacity: 0;
+            animation: slideInTitle 0.8s ease forwards;
+        }
+
+        @keyframes slideInTitle {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--rose), var(--gold), var(--mauve));
+            margin: 1rem auto;
+            border-radius: 2px;
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 1; transform: scaleX(1); }
+            50% { opacity: 0.7; transform: scaleX(1.2); }
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--mauve);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+            font-style: italic;
+        }
+
+        #home {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .home-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .home-content h1 {
+            font-size: 4rem;
+            background: linear-gradient(135deg, var(--chocolate), var(--mauve), var(--rose));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            animation: textShine 3s ease-in-out infinite;
+            background-size: 200% auto;
+        }
+
+        @keyframes textShine {
+            0%, 100% { background-position: 0% center; }
+            50% { background-position: 100% center; }
+        }
+
+        .home-content h2 {
+            font-size: 2rem;
+            color: var(--mauve);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .tagline {
+            font-style: italic;
+            color: var(--mauve);
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease 0.5s both;
+        }
+
+        .home-content p {
+            font-size: 1.15rem;
+            color: var(--chocolate);
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 1s ease 0.7s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.9s both;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1.2rem 2.5rem;
+            background: linear-gradient(135deg, var(--rose), var(--mauve));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.4s ease;
+            font-size: 1rem;
+            font-weight: 600;
+            box-shadow: 0 10px 30px rgba(212, 165, 165, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transition: width 0.6s, height 0.6s, top 0.6s, left 0.6s;
+        }
+
+        .cta-button:hover::before {
+            width: 300px;
+            height: 300px;
+            top: -150px;
+            left: -150px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(212, 165, 165, 0.6);
+        }
+
+        .cta-button.secondary {
+            background: white;
+            color: var(--mauve);
+            border: 2px solid var(--rose);
+        }
+
+        .cta-button.download {
+            background: linear-gradient(135deg, var(--gold), var(--peach));
+            color: var(--espresso);
+        }
+
+        .home-image {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .profile-circle {
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--rose), var(--mauve));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10rem;
+            box-shadow: 0 20px 60px rgba(212, 165, 165, 0.4);
+            animation: floatProfile 4s ease-in-out infinite;
+            position: relative;
+        }
+
+        .profile-circle::before {
+            content: '';
+            position: absolute;
+            width: 420px;
+            height: 420px;
+            border-radius: 50%;
+            border: 3px solid var(--gold);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes floatProfile {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.3; }
+        }
+
+        .about-box {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 25px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .about-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(212, 165, 165, 0.3);
+        }
+
+        .about-box p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--chocolate);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--blush), var(--peach));
+            border-radius: 20px;
+            transition: all 0.4s ease;
+        }
+
+        .stat-item:hover {
+            transform: scale(1.08) rotate(2deg);
+            box-shadow: 0 15px 35px rgba(212, 165, 165, 0.4);
+        }
+
+        .stat-icon { 
+            font-size: 2.5rem; 
+            margin-bottom: 0.5rem;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .stat-number { font-size: 2rem; font-weight: bold; color: var(--chocolate); }
+        .stat-label { color: var(--mauve); font-size: 0.9rem; margin-top: 0.3rem; }
+
+        .education-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 25px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            transition: all 0.4s ease;
+        }
+
+        .education-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(212, 165, 165, 0.4);
+        }
+
+        .education-card h3 {
+            color: var(--chocolate);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tab-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            padding: 1rem 2rem;
+            background: white;
+            border: 2px solid var(--rose);
+            border-radius: 25px;
+            color: var(--chocolate);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-button:hover, .tab-button.active {
+            background: linear-gradient(135deg, var(--rose), var(--mauve));
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(212, 165, 165, 0.4);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .interactive-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2.5rem;
+            border-radius: 25px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .interactive-card::after {
+            content: '👆 Click for details';
+            position: absolute;
+            bottom: 1rem;
+            right: 1.5rem;
+            font-size: 0.8rem;
+            color: var(--mauve);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .interactive-card:hover::after {
+            opacity: 1;
+        }
+
+        .interactive-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(212, 165, 165, 0.5);
+        }
+
+        .card-icon { 
+            font-size: 3rem; 
+            margin-bottom: 1rem;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .interactive-card:hover .card-icon {
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        .interactive-card h3 { color: var(--chocolate); margin-bottom: 0.8rem; font-size: 1.5rem; }
+        .interactive-card .date { color: var(--mauve); font-size: 0.9rem; margin-bottom: 1rem; font-style: italic; }
+        .interactive-card p { color: var(--chocolate); line-height: 1.6; }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 25px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .skill-card:hover::before {
+            left: 100%;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 20px 50px rgba(212, 165, 165, 0.4);
+        }
+
+        .skill-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, var(--blush), var(--peach));
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--chocolate);
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: linear-gradient(135deg, var(--rose), var(--mauve));
+            color: white;
+            transform: scale(1.1) rotate(3deg);
+        }
+
+        .project-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .explore-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--gold), var(--peach));
+            color: var(--espresso);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .explore-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(230, 195, 156, 0.5);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, var(--cream), var(--blush));
+            margin: 5% auto;
+            padding: 3rem;
+            border-radius: 30px;
+            width: 85%;
+            max-width: 800px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-height: 80vh;
+            overflow-y: auto;
+            animation: slideInModal 0.4s ease;
+        }
+
+        @keyframes slideInModal {
+            from {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .close {
+            color: var(--chocolate);
+            float: right;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close:hover {
+            color: var(--rose);
+            transform: rotate(90deg) scale(1.2);
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--rose), var(--mauve));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(212, 165, 165, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(212, 165, 165, 0.7);
+        }
+
+        @media (max-width: 968px) {
+            .nav-links { display: none; }
+            .burger-menu { display: flex; }
+            .mobile-menu { display: block; }
+            .home-content h1 { font-size: 3rem; }
+            .profile-circle { width: 300px; height: 300px; font-size: 7rem; }
+            .profile-circle::before { width: 320px; height: 320px; }
+        }
+
+        @media (max-width: 600px) {
+            .home-content h1 { font-size: 2.2rem; }
+            .modal-content { width: 95%; padding: 2rem; }
+            section { padding: 100px 5% 60px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-progress" id="scrollProgress"></div>
+    <div class="custom-cursor"></div>
+    <div class="cursor-dot"></div>
+
+    <div class="bg-decoration">
+        <div class="floating-shape shape1"></div>
+        <div class="floating-shape shape2"></div>
+        <div class="floating-shape shape3"></div>
+    </div>
+
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">✨ Keyla</div>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About Me</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
+                <li class="has-dropdown">
+                    <a href="#experience" class="nav-link">Experience</a>
+                    <div class="dropdown-content">
+                        <a href="#" onclick="goToExperience('professional')">💼 Professional</a>
+                        <a href="#" onclick="goToExperience('organization')">🤝 Organization</a>
+                    </div>
+                </li>
+                <li><a href="#publications" class="nav-link">Publications</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#certifications" class="nav-link">Certifications</a></li>
+                <li><a href="#achievements" class="nav-link">Achievements</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="burger-menu" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#home" onclick="toggleMobileMenu()">Home</a>
+        <a href="#about" onclick="toggleMobileMenu()">About Me</a>
+        <a href="#education" onclick="toggleMobileMenu()">Education</a>
+        <a href="#experience" onclick="toggleMobileMenu()">Experience</a>
+        <a href="#publications" onclick="toggleMobileMenu()">Publications</a>
+        <a href="#projects" onclick="toggleMobileMenu()">Projects</a>
+        <a href="#certifications" onclick="toggleMobileMenu()">Certifications</a>
+        <a href="#achievements" onclick="toggleMobileMenu()">Achievements</a>
+        <a href="#skills" onclick="toggleMobileMenu()">Skills</a>
+        <a href="#contact" onclick="toggleMobileMenu()">Contact</a>
+    </div>
+
+    <section id="home">
+        <div class="home-content">
+            <h1>Aqeela Fathya Najwa</h1>
+            <h2>Data Analyst | Data Enthusiast</h2>
+            <p class="tagline">"Where curiosity meets data - building insights, driving change."</p>
+            <p>Hello, I am Keyla! Passionate about transforming data into actionable insights, with a background in data science and experience in business intelligence and project coordination.</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="cta-button">
+                    <span>💌</span> Let's Connect
+                </a>
+                <a href="#projects" class="cta-button secondary">
+                    <span>📊</span> View Projects
+                </a>
+                <a href="#" class="cta-button download" onclick="alert('Please upload your CV PDF and replace this link!')">
+                    <span>📄</span> Download CV
+                </a>
+            </div>
+        </div>
+        <div class="home-image">
+            <div class="profile-circle">👩‍💻</div>
+        </div>
+    </section>
+
+    <section id="about" class="reveal">
+        <h2 class="section-title">About Me</h2>
+        <p class="section-subtitle">A brief introduction</p>
+        
+        <div class="about-box">
+            <p>I'm a fresh graduate from Telkom University with a degree in Data Science, graduating with Cum Laude honors (GPA 3.81/4.00). My journey in data science has been enriched by hands-on experience as a Data Analyst Intern at PT Pelita Air Service and Telkom University, where I transformed raw data into actionable insights through interactive dashboards and comprehensive analytics.</p>
+            
+            <p>As a Teaching Assistant for 4 semesters, I've guided over 100+ students through complex technical concepts in AI, Operating Systems, and various foundational computing courses. This experience has sharpened my ability to communicate complex ideas clearly and work collaboratively in diverse teams.</p>
+            
+            <p>Beyond technical skills, I'm deeply passionate about leveraging data to drive meaningful change. I've published 2 international papers on machine learning applications in healthcare and received the Best Presenter Award at an international conference. I'm actively seeking opportunities in data analytics, business intelligence, and management trainee programs where data plays a strategic role.</p>
+        </div>
+
+        <div class="about-stats">
+            <div class="stat-item">
+                <div class="stat-icon">📝</div>
+                <div class="stat-number">2</div>
+                <div class="stat-label">International Publications</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon">👥</div>
+                <div class="stat-number">100+</div>
+                <div class="stat-label">Students Guided</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon">🎯</div>
+                <div class="stat-number">4</div>
+                <div class="stat-label">Semesters Teaching</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon">🏆</div>
+                <div class="stat-number">Best</div>
+                <div class="stat-label">Presenter Award</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="reveal">
+        <h2 class="section-title">Education</h2>
+        <p class="section-subtitle">My academic journey</p>
+        
+        <div class="education-card">
+            <h3>Bachelor of Data Science (S.Si.D.)</h3>
+            <p class="university" style="color: var(--mauve); font-size: 1.3rem; margin-bottom: 1rem;">Telkom University, Bandung, West Java, Indonesia</p>
+            <p class="gpa" style="font-size: 1.5rem; font-weight: bold; color: var(--rose); margin-bottom: 1rem;">GPA: 3.81/4.00 — Cum Laude</p>
+            <p class="date" style="color: var(--mauve); font-style: italic; margin-bottom: 1.5rem;">September 2021 – February 2025</p>
+            
+            <div style="margin-top: 2rem; text-align: left;">
+                <h4 style="color: var(--chocolate); font-size: 1.3rem; margin-bottom: 1rem;">🎓 Academic Involvement:</h4>
+                <ul style="line-height: 2; max-width: 700px; margin: 0 auto;">
+                    <li><strong>Teaching Assistant</strong> for 6 courses: Mathematical Logic (2x), Discrete Mathematics, Digital System, Computer Organization & Architecture, ICT Global Insight</li>
+                    <li><strong>Laboratory Assistant</strong> for Programming and Database courses (AI, OS, OOP)</li>
+                    <li><strong>Academic Committee</strong> member of Data Science Capstone Project</li>
+                    <li><strong>Student Representative</strong> during accreditation assessment of Bachelor of Data Science program</li>
+                    <li><strong>Committee Member for Paper Revision</strong> at ICICyTA 2024 and ICoDSA 2025</li>
+                    <li><strong>Community Service (Abdimas)</strong> at SMA Negeri 12 Bandung — seminar on Python Programming & Data Security</li>
+                    <li><strong>Professional Internship</strong> as Data Analyst at PT Pelita Air Service</li>
+                </ul>
+
+                <h4 style="color: var(--chocolate); font-size: 1.3rem; margin: 2rem 0 1rem;">🏆 Academic Achievements:</h4>
+                <ul style="line-height: 2; max-width: 700px; margin: 0 auto;">
+                    <li>Published <strong>2 international papers</strong> in IEEE and JCSE (Scopus-indexed)</li>
+                    <li>Awarded <strong>Best Presenter</strong> at The 4th ICICyTA 2024</li>
+                    <li>Successfully completed academic projects in ML, data visualization, and BI</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="education-card" style="margin-top: 2rem;">
+            <h3>SMA Negeri 12 Bandung</h3>
+            <p class="university" style="color: var(--mauve); font-size: 1.2rem; margin-bottom: 0.5rem;">Bandung, West Java, Indonesia</p>
+            <p class="date" style="color: var(--mauve); font-style: italic; margin-bottom: 1.5rem;">July 2018 – May 2021</p>
+            
+            <div style="margin-top: 1.5rem; text-align: left;">
+                <h4 style="color: var(--chocolate); font-size: 1.2rem; margin-bottom: 1rem;">🎭 Activities & Social Involvement:</h4>
+                <ul style="line-height: 2; max-width: 700px; margin: 0 auto;">
+                    <li>Active member of <strong>Band and Percussion Organization</strong></li>
+                    <li>Performed in multiple percussion events and school art performances</li>
+                    <li>Served in organizing and public relations committees for various events</li>
+                </ul>
+
+                <h4 style="color: var(--chocolate); font-size: 1.2rem; margin: 2rem 0 1rem;">📋 Organizational Roles:</h4>
+                <ul style="line-height: 2; max-width: 700px; margin: 0 auto; font-size: 0.95rem;">
+                    <li><strong>Vice Coordinator of Public Relations</strong> – KIAS 2020 (Art Concert)</li>
+                    <li><strong>Staff of Public Relations</strong> – HARPUN 2019 (Annual Student Gathering)</li>
+                    <li><strong>Staff of Event</strong> – Iftar KREMS 2019 (Ramadan Event)</li>
+                    <li><strong>Coordinator of Fundraising Committee</strong> – GL 2019 (Graduation)</li>
+                    <li><strong>Staff of Public Relations</strong> – GL 2019 (Farewell Party)</li>
+                    <li><strong>Staff of Publication & Documentation</strong> – KIAS 2019 (Art Concert)</li>
+                </ul>
+
+                <h4 style="color: var(--chocolate); font-size: 1.2rem; margin: 2rem 0 1rem;">🏆 Achievement:</h4>
+                <div style="background: linear-gradient(135deg, var(--blush), var(--peach)); padding: 1.5rem; border-radius: 15px; max-width: 700px; margin: 0 auto;">
+                    <p style="font-size: 1.1rem; font-weight: bold; color: var(--chocolate); margin-bottom: 0.5rem;">🥇 1st Place – Storytelling Competition</p>
+                    <p style="color: var(--mauve); font-weight: 600;">PORAK (Pekan Kreativitas Siswa)</p>
+                    <p style="margin-top: 0.5rem; color: var(--chocolate);">Won first place by performing the story "Malin Kundang" in a school-wide creative storytelling competition organized by SMA Negeri 12 Bandung.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="reveal">
+        <h2 class="section-title">Experience</h2>
+        <p class="section-subtitle">My professional & organizational journey</p>
+        
+        <div class="tab-container">
+            <button class="tab-button active" onclick="switchTab('professional')">💼 Professional</button>
+            <button class="tab-button" onclick="switchTab('organization')">🤝 Organization</button>
+        </div>
+
+        <div id="professional" class="tab-content active">
+            <div class="card-grid">
+                <div class="interactive-card" onclick="openModal('exp1')">
+                    <div class="card-icon">⚡</div>
+                    <h3>Data Analyst Intern</h3>
+                    <p class="date">Sept 2025 - Present</p>
+                    <p><strong>PT Energi Negeri Meusenia (ENERMA)</strong></p>
+                    <p>South Jakarta | Remote</p>
+                </div>
+
+                <div class="interactive-card" onclick="openModal('exp2')">
+                    <div class="card-icon">✈️</div>
+                    <h3>Data Analyst Intern</h3>
+                    <p class="date">Jul 2024 - Sept 2024</p>
+                    <p><strong>PT Pelita Air Service</strong></p>
+                    <p>Central Jakarta | Onsite</p>
+                </div>
+
+                <div class="interactive-card" onclick="openModal('exp3')">
+                    <div class="card-icon">💻</div>
+                    <h3>Practicum Assistant</h3>
+                    <p class="date">Feb 2024 - Jun 2025</p>
+                    <p><strong>Informatics Lab - Telkom University</strong></p>
+                    <p>3 Courses: AI, OS, OOP</p>
+                </div>
+
+                <div class="interactive-card" onclick="openModal('exp4')">
+                    <div class="card-icon">📚</div>
+                    <h3>Data Analyst Intern</h3>
+                    <p class="date">Jan 2024 - Feb 2024</p>
+                    <p><strong>PT Pelita Air Service (PATC)</strong></p>
+                    <p>Central Jakarta | Onsite</p>
+                </div>
+
+                <div class="interactive-card" onclick="openModal('exp5')">
+                    <div class="card-icon">👩‍🏫</div>
+                    <h3>Lecturer Assistant</h3>
+                    <p class="date">Sept 2023 - Jan 2025</p>
+                    <p><strong>Telkom University</strong></p>
+                    <p>6 Courses, 4 Semesters</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="organization" class="tab-content">
+            <div class="card-grid">
+                <div class="interactive-card" onclick="openModal('org1')">
+                    <div class="card-icon">🎓</div>
+                    <h3>ML Path Member</h3>
+                    <p><strong>GDSC Telkom University</strong></p>
+                    <p class="date">Dec 2023 – Jun 2025</p>
+                </div>
+
+                <div class="interactive-card" onclick="openModal('org2')">
+                    <div class="card-icon">📋</div>
+                    <h3>Secretary I</h3>
+                    <p><strong>PERMIDSI 2024</strong></p>
+                    <p class="date">Nov 2023 – Feb 2024</p>
+                </div>
+
+                <div class="interactive-card" onclick="openModal('org3')">
+                    <div class="card-icon">🔬</div>
+                    <h3>Laboratory Member</h3>
+                    <p><strong>Big Data Lab</strong></p>
+                    <p class="date">Aug 2023 – Dec 2024</p>
+                </div>
+
+                <div class="interactive-card" onclick="openModal('org4')">
+                    <div class="card-icon">🎪</div>
+                    <h3>Student Committee</h3>
+                    <p><strong>GALAKSI 2023</strong></p>
+                    <p class="date">Sep 2023 – Dec 2023</p>
+                </div>
+
+                <div class="interactive-card" onclick="openModal('org5')">
+                    <div class="card-icon">🤝</div>
+                    <h3>Coordinator</h3>
+                    <p><strong>PKKMB DS 2023</strong></p>
+                    <p class="date">Aug 2023 – Sep 2023</p>
+                </div>
+
+                <div class="interactive-card" onclick="openModal('org6')">
+                    <div class="card-icon">👥</div>
+                    <h3>Liaison Officer</h3>
+                    <p><strong>PKKMB Telkom</strong></p>
+                    <p class="date">May 2023 – Oct 2023</p>
+                </div>
+
+                <div class="interactive-card" onclick="openModal('org7')">
+                    <div class="card-icon">🎯</div>
+                    <h3>PIC</h3>
+                    <p><strong>PERMIDSI 2023</strong></p>
+                    <p class="date">Jan 2023 – Mar 2023</p>
+                </div>
+
+                <div class="interactive-card" onclick="openModal('org8')">
+                    <div class="card-icon">✍️</div>
+                    <h3>Secretary I</h3>
+                    <p><strong>Formatur HIMA DS</strong></p>
+                    <p class="date">Nov 2022 – Feb 2024</p>
+                </div>
+
+                <div class="interactive-card" onclick="openModal('org9')">
+                    <div class="card-icon">📝</div>
+                    <h3>General Secretary</h3>
+                    <p><strong>FEEDS 2022</strong></p>
+                    <p class="date">Nov 2022 – Dec 2022</p>
+                </div>
+
+                <div class="interactive-card" onclick="openModal('org10')">
+                    <div class="card-icon">🎭</div>
+                    <h3>Event Staff</h3>
+                    <p><strong>PERFECT PERMIB</strong></p>
+                    <p class="date">Nov 2021 – Jun 2022</p>
+                </div>
+
+                <div class="interactive-card" onclick="openModal('org11')">
+                    <div class="card-icon">📋</div>
+                    <h3>General Secretary</h3>
+                    <p><strong>PKKMB DS 2022</strong></p>
+                    <p class="date">Jul 2022 – Sep 2022</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="publications" class="reveal">
+        <h2 class="section-title">Publications</h2>
+        <p class="section-subtitle">Research contributions to the community</p>
+        <div class="card-grid">
+            <div class="interactive-card" onclick="openModal('pub1')">
+                <div class="card-icon">📝</div>
+                <h3>Enhancing Multiclass Classification of Child Nutritional Status</h3>
+                <p class="date">December 17, 2024 | Added to IEEE: March 11, 2025</p>
+                <span class="pub-badge">IEEE</span>
+                <span class="pub-badge">ICICyTA 2024</span>
+                <span class="pub-badge">🏆 Best Presenter</span>
+                <p style="margin-top: 1rem;"><strong>Using KNN and Random Forest with SMOTE</strong></p>
+                <p style="margin-top: 0.5rem;"><strong>First Author & Presenter</strong></p>
+                <p style="font-size: 0.9rem; color: var(--mauve); margin-top: 0.5rem;">
+                    <a href="https://ieeexplore.ieee.org/document/10912991" target="_blank" rel="noopener" style="color: var(--mauve); text-decoration: underline;">🔗 IEEE Xplore Link</a>
+                </p>
+                <p style="font-size: 0.9rem; color: var(--chocolate); margin-top: 0.3rem;">
+                    <a href="https://doi.org/10.1109/ICICYTA64807.2024.10912991" target="_blank" rel="noopener" style="color: var(--chocolate); text-decoration: underline;">📄 DOI: 10.1109/ICICYTA64807.2024.10912991</a>
+                </p>
+            </div>
+
+            <div class="interactive-card" onclick="openModal('pub2')">
+                <div class="card-icon">📄</div>
+                <h3>Enhancing Stunting Prediction for Indonesian Children</h3>
+                <p class="date">Published: February 4, 2025</p>
+                <span class="pub-badge">JCSE</span>
+                <span class="pub-badge">Scopus-Indexed</span>
+                <span class="pub-badge">Vol. 18, No. 4</span>
+                <p style="margin-top: 1rem;"><strong>Using ML with SMOTE Data Balancing</strong></p>
+                <p style="margin-top: 0.5rem;"><strong>First Author</strong></p>
+                <p style="font-size: 0.9rem; color: var(--chocolate); margin-top: 0.5rem;">
+                    <a href="https://doi.org/10.5626/JCSE.2024.18.4.203" target="_blank" rel="noopener" style="color: var(--chocolate); text-decoration: underline;">📄 DOI: 10.5626/JCSE.2024.18.4.203</a>
+                </p>
+                <p style="font-size: 0.85rem; color: var(--mauve); margin-top: 0.3rem;">pp. 203–213</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="reveal">
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-subtitle">Real-world solutions I've built</p>
+        <div class="card-grid">
+            <div class="interactive-card" onclick="openModal('project1')">
+                <div class="card-icon">❤️</div>
+                <h3>Heart Disease Classification</h3>
+                <p>Random Forest with Evolutionary Boosting achieving 86.67% test accuracy</p>
+                <div style="margin-top: 1rem;">
+                    <span style="display: inline-block; background: var(--gold); color: var(--espresso); padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.85rem; margin: 0.3rem 0.3rem 0 0;">AutoML</span>
+                    <span style="display: inline-block; background: var(--gold); color: var(--espresso); padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.85rem; margin: 0.3rem 0.3rem 0 0;">Random Forest</span>
+                </div>
+            </div>
+
+            <div class="interactive-card" onclick="openModal('project2')">
+                <div class="card-icon">👶</div>
+                <h3>Child Nutrition Classification</h3>
+                <p>Multiclass model with SMOTE achieving 97.59% accuracy</p>
+                <div style="margin-top: 1rem;">
+                    <span style="display: inline-block; background: var(--gold); color: var(--espresso); padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.85rem; margin: 0.3rem 0.3rem 0 0;">KNN</span>
+                    <span style="display: inline-block; background: var(--gold); color: var(--espresso); padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.85rem; margin: 0.3rem 0.3rem 0 0;">SMOTE</span>
+                </div>
+            </div>
+
+            <div class="interactive-card" onclick="openModal('project3')">
+                <div class="card-icon">⛏️</div>
+                <h3>Mining BI Dashboard</h3>
+                <p>Real-time coal production monitoring for PT Kamalindo Sompurna</p>
+                <div style="margin-top: 1rem;">
+                    <span style="display: inline-block; background: var(--gold); color: var(--espresso); padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.85rem; margin: 0.3rem 0.3rem 0 0;">Power BI</span>
+                    <span style="display: inline-block; background: var(--gold); color: var(--espresso); padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.85rem; margin: 0.3rem 0.3rem 0 0;">Real-time</span>
+                </div>
+            </div>
+
+            <div class="interactive-card" onclick="openModal('project4')">
+                <div class="card-icon">🛒</div>
+                <h3>Marketplace UI/UX</h3>
+                <p>High-fidelity design for Telkom University students marketplace</p>
+                <div style="margin-top: 1rem;">
+                    <span style="display: inline-block; background: var(--gold); color: var(--espresso); padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.85rem; margin: 0.3rem 0.3rem 0 0;">Figma</span>
+                    <span style="display: inline-block; background: var(--gold); color: var(--espresso); padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.85rem; margin: 0.3rem 0.3rem 0 0;">UI/UX</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-buttons">
+            <a href="https://github.com/aqeelafn" target="_blank" rel="noopener" class="explore-button">
+                <span>💻</span> Explore More on GitHub
+            </a>
+            <a href="https://linkedin.com/in/aqeelafn" target="_blank" rel="noopener" class="explore-button">
+                <span>💼</span> View Projects on LinkedIn
+            </a>
+        </div>
+    </section>
+
+    <section id="certifications" class="reveal">
+        <h2 class="section-title">Certifications & Training</h2>
+        <p class="section-subtitle">Continuous learning journey</p>
+        
+        <div style="max-width: 900px; margin: 0 auto;">
+            <!-- 2025 Timeline -->
+            <div style="margin-bottom: 4rem;">
+                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem;">
+                    <div style="font-size: 3rem;">🌟</div>
+                    <div>
+                        <h3 style="color: var(--chocolate); font-size: 2rem; margin-bottom: 0.3rem;">2025</h3>
+                        <p style="color: var(--mauve); font-style: italic;">Latest Achievements</p>
+                    </div>
+                </div>
+                
+                <div style="border-left: 3px solid var(--rose); padding-left: 2rem; margin-left: 1.5rem;">
+                    <!-- Digital Talent Scholarship -->
+                    <div style="margin-bottom: 2.5rem; position: relative;">
+                        <div style="position: absolute; left: -2.6rem; width: 20px; height: 20px; background: var(--gold); border-radius: 50%; border: 3px solid white;"></div>
+                        <h4 style="color: var(--chocolate); font-size: 1.3rem; margin-bottom: 0.5rem;">📚 Digital Talent Scholarship 2025</h4>
+                        <p style="color: var(--mauve); font-size: 0.9rem; margin-bottom: 1rem;">Pusat Pengembangan Talenta Digital</p>
+                        
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;">
+                            <span style="background: linear-gradient(135deg, var(--blush), var(--peach)); padding: 0.4rem 0.8rem; border-radius: 15px; font-size: 0.85rem; cursor: pointer;" onclick="openModal('cert1')">💼 Fundamental Data Analyst</span>
+                            <span style="background: linear-gradient(135deg, var(--blush), var(--peach)); padding: 0.4rem 0.8rem; border-radius: 15px; font-size: 0.85rem; cursor: pointer;" onclick="openModal('cert2')">📊 BI Analyst</span>
+                            <span style="background: linear-gradient(135deg, var(--blush), var(--peach)); padding: 0.4rem 0.8rem; border-radius: 15px; font-size: 0.85rem; cursor: pointer;" onclick="openModal('cert3')">🎯 Wawasan Karir</span>
+                            <span style="background: linear-gradient(135deg, var(--blush), var(--peach)); padding: 0.4rem 0.8rem; border-radius: 15px; font-size: 0.85rem; cursor: pointer;" onclick="openModal('cert4')">🔬 Pengenalan Data Science</span>
+                        </div>
+                    </div>
+                    
+                    <!-- DQLab 2025 -->
+                    <div style="margin-bottom: 2.5rem; position: relative;">
+                        <div style="position: absolute; left: -2.6rem; width: 20px; height: 20px; background: var(--gold); border-radius: 50%; border: 3px solid white;"></div>
+                        <h4 style="color: var(--chocolate); font-size: 1.3rem; margin-bottom: 0.5rem;">📖 DQLab Courses 2025</h4>
+                        <p style="color: var(--mauve); font-size: 0.9rem; margin-bottom: 0.5rem;">17 Courses Completed</p>
+                        <button onclick="openModal('dqlab2025')" style="background: linear-gradient(135deg, var(--rose), var(--mauve)); color: white; border: none; padding: 0.6rem 1.5rem; border-radius: 20px; cursor: pointer; font-weight: 600; transition: all 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                            View All Courses →
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2023 Timeline -->
+            <div style="margin-bottom: 4rem;">
+                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem;">
+                    <div style="font-size: 3rem;">📚</div>
+                    <div>
+                        <h3 style="color: var(--chocolate); font-size: 2rem; margin-bottom: 0.3rem;">2023</h3>
+                        <p style="color: var(--mauve); font-style: italic;">15+ Certifications</p>
+                    </div>
+                </div>
+                
+                <div style="border-left: 3px solid var(--rose); padding-left: 2rem; margin-left: 1.5rem;">
+                    <div style="margin-bottom: 2.5rem; position: relative;">
+                        <div style="position: absolute; left: -2.6rem; width: 20px; height: 20px; background: var(--gold); border-radius: 50%; border: 3px solid white;"></div>
+                        <h4 style="color: var(--chocolate); font-size: 1.3rem; margin-bottom: 0.5rem;">🎓 Multiple Platforms</h4>
+                        <p style="color: var(--mauve); font-size: 0.9rem; margin-bottom: 1rem;">DQLab, Cognitive Class, MySkill, RevoU</p>
+                        <button onclick="openModal('cert2023all')" style="background: linear-gradient(135deg, var(--gold), var(--peach)); color: var(--espresso); border: none; padding: 0.6rem 1.5rem; border-radius: 20px; cursor: pointer; font-weight: 600; transition: all 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                            View All 2023 Certificates →
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2022 Timeline -->
+            <div style="margin-bottom: 4rem;">
+                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem;">
+                    <div style="font-size: 3rem;">💼</div>
+                    <div>
+                        <h3 style="color: var(--chocolate); font-size: 2rem; margin-bottom: 0.3rem;">2022</h3>
+                        <p style="color: var(--mauve); font-style: italic;">Google Specialization</p>
+                    </div>
+                </div>
+                
+                <div style="border-left: 3px solid var(--rose); padding-left: 2rem; margin-left: 1.5rem;">
+                    <div style="margin-bottom: 2.5rem; position: relative;">
+                        <div style="position: absolute; left: -2.6rem; width: 20px; height: 20px; background: var(--gold); border-radius: 50%; border: 3px solid white;"></div>
+                        <h4 style="color: var(--chocolate); font-size: 1.3rem; margin-bottom: 0.5rem;">🏅 Google Career Certificates</h4>
+                        <p style="color: var(--mauve); font-size: 0.9rem; margin-bottom: 1rem;">IT Support Professional Certificate</p>
+                        <button onclick="openModal('cert2022all')" style="background: linear-gradient(135deg, var(--gold), var(--peach)); color: var(--espresso); border: none; padding: 0.6rem 1.5rem; border-radius: 20px; cursor: pointer; font-weight: 600; transition: all 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                            View All 2022 Certificates →
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="achievements" class="reveal">
+        <h2 class="section-title">Achievements & Awards</h2>
+        <p class="section-subtitle">Milestones I'm proud of</p>
+        
+        <div class="card-grid">
+            <div class="interactive-card" onclick="openModal('achieve1')">
+                <div class="card-icon">🏆</div>
+                <h3>Best Presenter Award</h3>
+                <p class="date">2024</p>
+                <p><strong>The 4th ICICyTA 2024</strong></p>
+                <p>International Conference on Intelligent Cybernetics Technology & Applications</p>
+            </div>
+
+            <div class="interactive-card" onclick="openModal('achieve2')">
+                <div class="card-icon">🥇</div>
+                <h3>1st Place Story Telling Competition</h3>
+                <p class="date">High School</p>
+                <p><strong>PORAK - Pekan Kreativitas Siswa</strong></p>
+                <p>Story: Malin Kundang</p>
+            </div>
+
+            <div class="interactive-card" onclick="openModal('achieve3')">
+                <div class="card-icon">🎓</div>
+                <h3>Accreditation Representative</h3>
+                <p class="date">2024</p>
+                <p><strong>Data Science Program</strong></p>
+                <p>Selected to represent in program accreditation assessment</p>
+            </div>
+
+            <div class="interactive-card" onclick="openModal('achieve4')">
+                <div class="card-icon">💼</div>
+                <h3>Entrepreneurship - Basreng Business</h3>
+                <p class="date">University Period</p>
+                <p><strong>Treasurer - Team of 10</strong></p>
+                <p>Achieved significant revenue & sales targets</p>
+            </div>
+
+            <div class="interactive-card" onclick="openModal('achieve5')">
+                <div class="card-icon">📝</div>
+                <h3>Revision Team Committee</h3>
+                <p class="date">2025 & 2024</p>
+                <p><strong>International Conferences</strong></p>
+                <p>ICoDSA 2025 & ICICyTA 2024</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="reveal">
+        <h2 class="section-title">Skills & Expertise</h2>
+        <p class="section-subtitle">Technical and soft skills I bring to the table</p>
+        <div class="skills-container">
+            <div class="skill-card">
+                <h3>📊 Data Analysis</h3>
+                <div class="skill-items">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Excel</span>
+                    <span class="skill-tag">Statistical Analysis</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <h3>📈 Data Visualization</h3>
+                <div class="skill-items">
+                    <span class="skill-tag">Tableau</span>
+                    <span class="skill-tag">Power BI</span>
+                    <span class="skill-tag">Looker Studio</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <h3>💼 Business Intelligence</h3>
+                <div class="skill-items">
+                    <span class="skill-tag">Dashboard Design</span>
+                    <span class="skill-tag">Data Integration</span>
+                    <span class="skill-tag">Real-time Analytics</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <h3>🤖 Machine Learning</h3>
+                <div class="skill-items">
+                    <span class="skill-tag">AutoML</span>
+                    <span class="skill-tag">Random Forest</span>
+                    <span class="skill-tag">KNN</span>
+                    <span class="skill-tag">SMOTE</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <h3>🗣️ Soft Skills</h3>
+                <div class="skill-items">
+                    <span class="skill-tag">Analytical Thinking</span>
+                    <span class="skill-tag">Problem Solving</span>
+                    <span class="skill-tag">Communication</span>
+                    <span class="skill-tag">Teamwork</span>
+                    <span class="skill-tag">Project Management</span>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <h3>🎨 Design & Tools</h3>
+                <div class="skill-items">
+                    <span class="skill-tag">Figma</span>
+                    <span class="skill-tag">UI/UX Design</span>
+                    <span class="skill-tag">Attention to Detail</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="reveal">
+        <h2 class="section-title">Let's Connect</h2>
+        <p class="section-subtitle">From code to communication, if it's meaningful, I'm in.</p>
+        
+        <div style="max-width: 1000px; margin: 0 auto;">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <p style="color: var(--mauve); font-size: 1.2rem; font-style: italic; line-height: 1.8;">
+                    Whether it's dashboards, development programs, or just digital small talk — feel free to say hi! 👋<br>
+                    <span style="color: var(--chocolate); font-weight: 600;">I'm always excited to collaborate on meaningful projects and connect with fellow data enthusiasts!</span>
+                </p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+                <!-- Email Card -->
+                <a href="mailto:aqeelafathya@gmail.com" style="text-decoration: none; color: inherit;">
+                    <div style="background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(244, 228, 215, 0.95)); padding: 2rem; border-radius: 25px; box-shadow: 0 10px 35px rgba(0, 0, 0, 0.1); transition: all 0.4s ease; text-align: center; position: relative; overflow: hidden;" onmouseover="this.style.transform='translateY(-15px) scale(1.02)'; this.style.boxShadow='0 20px 50px rgba(212, 165, 165, 0.4)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 10px 35px rgba(0, 0, 0, 0.1)'">
+                        <div style="position: absolute; top: 0; right: 0; width: 100px; height: 100px; background: linear-gradient(135deg, var(--rose), transparent); border-radius: 0 0 0 100%; opacity: 0.3;"></div>
+                        <div style="font-size: 3.5rem; margin-bottom: 1rem; position: relative; z-index: 1;">📧</div>
+                        <h3 style="color: var(--chocolate); margin-bottom: 0.5rem; font-size: 1.5rem; position: relative; z-index: 1;">Email</h3>
+                        <p style="color: var(--mauve); font-size: 0.95rem; position: relative; z-index: 1;">aqeelafathya@gmail.com</p>
+                    </div>
+                </a>
+
+                <!-- LinkedIn Card -->
+                <a href="https://linkedin.com/in/aqeelafn" target="_blank" rel="noopener" style="text-decoration: none; color: inherit;">
+                    <div style="background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(244, 228, 215, 0.95)); padding: 2rem; border-radius: 25px; box-shadow: 0 10px 35px rgba(0, 0, 0, 0.1); transition: all 0.4s ease; text-align: center; position: relative; overflow: hidden;" onmouseover="this.style.transform='translateY(-15px) scale(1.02)'; this.style.boxShadow='0 20px 50px rgba(212, 165, 165, 0.4)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 10px 35px rgba(0, 0, 0, 0.1)'">
+                        <div style="position: absolute; top: 0; right: 0; width: 100px; height: 100px; background: linear-gradient(135deg, var(--mauve), transparent); border-radius: 0 0 0 100%; opacity: 0.3;"></div>
+                        <div style="font-size: 3.5rem; margin-bottom: 1rem; position: relative; z-index: 1;">💼</div>
+                        <h3 style="color: var(--chocolate); margin-bottom: 0.5rem; font-size: 1.5rem; position: relative; z-index: 1;">LinkedIn</h3>
+                        <p style="color: var(--mauve); font-size: 0.95rem; position: relative; z-index: 1;">linkedin.com/in/aqeelafn</p>
+                    </div>
+                </a>
+
+                <!-- GitHub Card -->
+                <a href="https://github.com/aqeelafn" target="_blank" rel="noopener" style="text-decoration: none; color: inherit;">
+                    <div style="background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(244, 228, 215, 0.95)); padding: 2rem; border-radius: 25px; box-shadow: 0 10px 35px rgba(0, 0, 0, 0.1); transition: all 0.4s ease; text-align: center; position: relative; overflow: hidden;" onmouseover="this.style.transform='translateY(-15px) scale(1.02)'; this.style.boxShadow='0 20px 50px rgba(212, 165, 165, 0.4)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 10px 35px rgba(0, 0, 0, 0.1)'">
+                        <div style="position: absolute; top: 0; right: 0; width: 100px; height: 100px; background: linear-gradient(135deg, var(--gold), transparent); border-radius: 0 0 0 100%; opacity: 0.3;"></div>
+                        <div style="font-size: 3.5rem; margin-bottom: 1rem; position: relative; z-index: 1;">💻</div>
+                        <h3 style="color: var(--chocolate); margin-bottom: 0.5rem; font-size: 1.5rem; position: relative; z-index: 1;">GitHub</h3>
+                        <p style="color: var(--mauve); font-size: 0.95rem; position: relative; z-index: 1;">github.com/aqeelafn</p>
+                    </div>
+                </a>
+
+                <!-- Instagram Card -->
+                <a href="https://instagram.com/keylaqn" target="_blank" rel="noopener" style="text-decoration: none; color: inherit;">
+                    <div style="background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(244, 228, 215, 0.95)); padding: 2rem; border-radius: 25px; box-shadow: 0 10px 35px rgba(0, 0, 0, 0.1); transition: all 0.4s ease; text-align: center; position: relative; overflow: hidden;" onmouseover="this.style.transform='translateY(-15px) scale(1.02)'; this.style.boxShadow='0 20px 50px rgba(212, 165, 165, 0.4)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 10px 35px rgba(0, 0, 0, 0.1)'">
+                        <div style="position: absolute; top: 0; right: 0; width: 100px; height: 100px; background: linear-gradient(135deg, var(--peach), transparent); border-radius: 0 0 0 100%; opacity: 0.3;"></div>
+                        <div style="font-size: 3.5rem; margin-bottom: 1rem; position: relative; z-index: 1;">📸</div>
+                        <h3 style="color: var(--chocolate); margin-bottom: 0.5rem; font-size: 1.5rem; position: relative; z-index: 1;">Instagram</h3>
+                        <p style="color: var(--mauve); font-size: 0.95rem; position: relative; z-index: 1;">@keylaqn</p>
+                    </div>
+                </a>
+
+                <!-- Phone Card -->
+                <a href="tel:+6283821666208" style="text-decoration: none; color: inherit;">
+                    <div style="background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(244, 228, 215, 0.95)); padding: 2rem; border-radius: 25px; box-shadow: 0 10px 35px rgba(0, 0, 0, 0.1); transition: all 0.4s ease; text-align: center; position: relative; overflow: hidden;" onmouseover="this.style.transform='translateY(-15px) scale(1.02)'; this.style.boxShadow='0 20px 50px rgba(212, 165, 165, 0.4)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 10px 35px rgba(0, 0, 0, 0.1)'">
+                        <div style="position: absolute; top: 0; right: 0; width: 100px; height: 100px; background: linear-gradient(135deg, var(--rose), transparent); border-radius: 0 0 0 100%; opacity: 0.3;"></div>
+                        <div style="font-size: 3.5rem; margin-bottom: 1rem; position: relative; z-index: 1;">📱</div>
+                        <h3 style="color: var(--chocolate); margin-bottom: 0.5rem; font-size: 1.5rem; position: relative; z-index: 1;">Phone</h3>
+                        <p style="color: var(--mauve); font-size: 0.95rem; position: relative; z-index: 1;">(+62) 838 2166 6208</p>
+                    </div>
+                </a>
+
+                <!-- Location Card -->
+                <div style="background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(244, 228, 215, 0.95)); padding: 2rem; border-radius: 25px; box-shadow: 0 10px 35px rgba(0, 0, 0, 0.1); transition: all 0.4s ease; text-align: center; position: relative; overflow: hidden; cursor: default;" onmouseover="this.style.transform='translateY(-15px) scale(1.02)'; this.style.boxShadow='0 20px 50px rgba(212, 165, 165, 0.4)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 10px 35px rgba(0, 0, 0, 0.1)'">
+                    <div style="position: absolute; top: 0; right: 0; width: 100px; height: 100px; background: linear-gradient(135deg, var(--mauve), transparent); border-radius: 0 0 0 100%; opacity: 0.3;"></div>
+                    <div style="font-size: 3.5rem; margin-bottom: 1rem; position: relative; z-index: 1;">📍</div>
+                    <h3 style="color: var(--chocolate); margin-bottom: 0.5rem; font-size: 1.5rem; position: relative; z-index: 1;">Location</h3>
+                    <p style="color: var(--mauve); font-size: 0.95rem; position: relative; z-index: 1;">Bandung, West Java</p>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div style="text-align: center; margin-top: 4rem; padding: 2.5rem; background: linear-gradient(135deg, rgba(212, 165, 165, 0.2), rgba(154, 123, 140, 0.2)); border-radius: 25px;">
+                <h3 style="color: var(--chocolate); font-size: 1.8rem; margin-bottom: 1rem;">Let's Build Something Amazing Together! ✨</h3>
+                <p style="color: var(--mauve); font-size: 1.1rem; line-height: 1.8; max-width: 700px; margin: 0 auto;">
+                    I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Whether you need data insights, analytics solutions, or just want to chat about data science — I'd love to hear from you!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop" onclick="scrollToTop()">
+        ↑
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script>
+        // Custom Cursor
+        const cursor = document.querySelector('.custom-cursor');
+        const cursorDot = document.querySelector('.cursor-dot');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            cursorDot.style.left = e.clientX + 'px';
+            cursorDot.style.top = e.clientY + 'px';
+        });
+
+        document.querySelectorAll('a, button, .interactive-card').forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        });
+
+        // Particles
+        for (let i = 0; i < 20; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 8 + 's';
+            particle.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            document.body.appendChild(particle);
+        }
+
+        // Scroll Progress
+        window.addEventListener('scroll', () => {
+            const scrollProgress = document.getElementById('scrollProgress');
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrolled = (window.scrollY / scrollHeight) * 100;
+            scrollProgress.style.width = scrolled + '%';
+
+            // Navbar
+            const navbar = document.getElementById('navbar');
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+
+            // Reveal on scroll
+            document.querySelectorAll('.reveal').forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) {
+                    el.classList.add('active');
+                }
+            });
+
+            // Active nav
+            const sections = document.querySelectorAll('section');
+            let current = '';
+            sections.forEach(section => {
+                if (window.scrollY >= section.offsetTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Navigation
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (!this.nextElementSibling || !this.nextElementSibling.classList.contains('dropdown-content')) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+                    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Mobile menu
+        function toggleMobileMenu() {
+            const burger = document.querySelector('.burger-menu');
+            const mobileMenu = document.getElementById('mobileMenu');
+            burger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        }
+
+        // Dropdown navigation - FIXED
+        function goToExperience(tab) {
+            event.preventDefault();
+            const experienceSection = document.querySelector('#experience');
+            experienceSection.scrollIntoView({ behavior: 'smooth' });
+            setTimeout(() => {
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                document.querySelectorAll('.tab-button').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                document.getElementById(tab).classList.add('active');
+                document.querySelectorAll('.tab-button').forEach(btn => {
+                    if ((tab === 'professional' && btn.textContent.includes('Professional')) ||
+                        (tab === 'organization' && btn.textContent.includes('Organization'))) {
+                        btn.classList.add('active');
+                    }
+                });
+            }, 600);
+        }
+
+        // Back to Top Button
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Fix certification buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            // Make sure all onclick handlers are working
+            const certButtons = document.querySelectorAll('[onclick*="openModal"]');
+            certButtons.forEach(btn => {
+                btn.style.cursor = 'pointer';
+            });
+        });
+
+        // Tab switching
+        function switchTab(tab) {
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById(tab).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Modal content
+        const modalContent = {
+            exp1: `<h2>⚡ PT Energi Negeri Meusenia (ENERMA)</h2><p><strong>Data Analyst Intern | Sept 2025 - Present</strong></p><p><strong>Location:</strong> South Jakarta, DKI Jakarta, Indonesia (Remote)</p><h3 style="margin-top:1.5rem; color:var(--mauve)">Key Responsibilities & Achievements:</h3><ul style="line-height: 2;"><li><strong>Data Consolidation:</strong> Collected and consolidated operational data across multiple regions and departments to support strategic analysis</li><li><strong>Automated Dashboards:</strong> Built automated dashboards summarizing commercial, operational, and financial KPIs for executive review</li><li><strong>Performance Analysis:</strong> Conducted performance analysis and presented actionable insights to the Board of Directors, improving reporting efficiency by 15%</li><li><strong>Data Quality Management:</strong> Maintained active communication with regional teams to ensure data accuracy and timely reporting</li></ul><h3 style="margin-top:1.5rem; color:var(--mauve)">Impact:</h3><p>Enhanced executive decision-making through comprehensive data consolidation and automated reporting systems, resulting in 15% improvement in reporting efficiency.</p>`,
+            
+            exp2: `<h2>✈️ PT Pelita Air Service</h2><p><strong>Data Analyst Intern | Jul 2024 - Sept 2024</strong></p><p><strong>Location:</strong> Central Jakarta, DKI Jakarta, Indonesia (Onsite)</p><h3 style="margin-top:1.5rem; color:var(--mauve)">Key Responsibilities & Achievements:</h3><ul style="line-height: 2;"><li><strong>Interactive Dashboards:</strong> Designed and implemented interactive dashboards for finance, sales, and cargo divisions using Excel and Tableau, enabling faster and more informed decision-making</li><li><strong>IT Asset Analysis:</strong> Analyzed 2,000+ IT asset records to assess equipment lifecycle, vendor performance, and distribution efficiency</li><li><strong>Requirements Gathering:</strong> Developed user stories and workflow diagrams to streamline requirements gathering for IT asset system enhancements</li><li><strong>Process Standardization:</strong> Drafted tailored SDLC guideline to standardize internal development processes and improve inter-team coordination</li></ul><h3 style="margin-top:1.5rem; color:var(--mauve)">Technologies Used:</h3><p>Excel, Tableau, SQL, Documentation Tools</p>`,
+            
+            exp3: `<h2>💻 Practicum Assistant - Informatics Lab</h2><p><strong>Telkom University | Feb 2024 - Jun 2025</strong></p><p><strong>Location:</strong> Bandung, West Java, Indonesia (Onsite)</p><h3 style="margin-top:1.5rem; color:var(--mauve)">Courses Assisted:</h3><ul style="line-height: 2;"><li><strong>Operating System Practicum (Sistem Operasi)</strong> - Sept 2024 – Jun 2025 (Xinu OS)</li><li><strong>Object-Oriented Programming Practicum (PBO)</strong> - Feb 2024 – Jan 2025 (Java)</li><li><strong>Basic Artificial Intelligence Practicum (DKA)</strong> - Feb 2025 – Jun 2025 (Python)</li></ul><h3 style="margin-top:1.5rem; color:var(--mauve)">Responsibilities & Achievements:</h3><ul style="line-height: 2;"><li>Guided 100+ students in weekly lab sessions, focusing on practical application of Java, Xinu OS, and Python for AI</li><li>Delivered live debugging sessions and hands-on implementation assistance to enhance coding accuracy</li><li>Evaluated student lab submissions and provided structured, constructive feedback to improve comprehension and performance</li></ul><h3 style="margin-top:1.5rem; color:var(--mauve)">Impact:</h3><p>Successfully mentored over 100 students through complex technical concepts with hands-on guidance and real-time problem-solving support.</p>`,
+            
+            exp4: `<h2>📚 PT Pelita Air Service (PATC)</h2><p><strong>Data Analyst Intern | Jan 2024 - Feb 2024</strong></p><p><strong>Location:</strong> Central Jakarta, DKI Jakarta, Indonesia (Onsite)</p><h3 style="margin-top:1.5rem; color:var(--mauve)">Key Responsibilities & Achievements:</h3><ul style="line-height: 2;"><li><strong>Data Cleaning & Analysis:</strong> Cleaned and analyzed 1,500+ operational training records to uncover patterns in batch training, certification completion, and schedule optimization</li><li><strong>Dashboard Development:</strong> Built visual dashboards using Excel and Looker Studio, improving transparency in training metrics and boosting scheduling efficiency by 10%</li><li><strong>Strategic Reporting:</strong> Generated performance trend reports to support strategic decisions in PATC's internal planning</li><li><strong>Data Quality Improvement:</strong> Recommended improvements to the data schema by identifying redundant data points and inconsistencies</li></ul><h3 style="margin-top:1.5rem; color:var(--mauve)">Technologies Used:</h3><p>Excel, Looker Studio, SQL, Data Analysis Tools</p><h3 style="margin-top:1.5rem; color:var(--mauve)">Impact:</h3><p>Achieved 10% improvement in scheduling efficiency through data-driven insights and enhanced data quality for better strategic planning.</p>`,
+            
+            exp5: `<h2>👩‍🏫 Lecturer Assistant - Telkom University</h2><p><strong>School of Computing | Sept 2023 - Jan 2025</strong></p><p><strong>Location:</strong> Bandung, West Java, Indonesia (Onsite)</p><h3 style="margin-top:1.5rem; color:var(--mauve)">Courses Assisted (6 Courses):</h3><ul style="line-height: 2;"><li><strong>Mathematical Logic</strong> - Sept 2023 – Jan 2024 & Sept 2024 – Jan 2025</li><li><strong>ICT Global Insight</strong> - Sept 2023 – Jan 2024</li><li><strong>Digital Systems</strong> - Feb 2024 – Jun 2024</li><li><strong>Discrete Mathematics</strong> - Feb 2024 – Jun 2024</li><li><strong>Computer Organization and Architecture</strong> - Sept 2024 – Jan 2025</li></ul><h3 style="margin-top:1.5rem; color:var(--mauve)">Responsibilities & Achievements:</h3><ul style="line-height: 2;"><li>Delivered tutorial sessions and addressed student inquiries on computing and mathematical fundamentals</li><li>Graded quizzes and assignments for 50–90 students per course, maintaining high accuracy and academic integrity</li><li>Supported exam preparation through focused review classes, contributing to an average 10–15% increase in student scores</li></ul><h3 style="margin-top:1.5rem; color:var(--mauve)">Impact:</h3><p>Successfully mentored hundreds of students across 4 semesters, contributing to measurable improvement in academic performance and comprehension of complex technical concepts.</p>`,
+            
+            org1: `<h2>🎓 GDSC Telkom University</h2><p><strong>Machine Learning Path Member | Dec 2023 – Jun 2025</strong></p><p><strong>Location:</strong> Bandung, West Java, Indonesia (Onsite)</p><h3 style="margin-top:1.5rem; color:var(--mauve)">About:</h3><p>A learning community under Google Developer Student Clubs focusing on Machine Learning and Artificial Intelligence.</p><h3 style="margin-top:1.5rem; color:var(--mauve)">Key Activities & Achievements:</h3><ul style="line-height: 2;"><li>Participated in regular workshops and discussions on supervised learning, model evaluation, and deployment</li><li>Strengthened data analysis and modeling skills through collaborative projects across departments</li><li>Engaged with ML community to stay updated on latest technologies and best practices</li></ul>`,
+            
+            org2: `<h2>📋 PERMIDSI 2024 - HIMA Data Science</h2><p><strong>Secretary I | Nov 2023 – Feb 2024</strong></p><p><strong>Location:</strong> Bandung, West Java, Indonesia (Onsite)</p><h3 style="margin-top:1.5rem; color:var(--mauve)">About:</h3><p>Annual election event for the HIMA DS chairman (class of 2022).</p><h3 style="margin-top:1.5rem; color:var(--mauve)">Key Responsibilities & Achievements:</h3><ul style="line-height: 2;"><li>Prepared all official documentation and scheduling for the election process</li><li>Coordinated cross-division communication to ensure efficient and transparent implementation</li><li><strong>Successfully completed the entire program 100% on time</strong> with active participation from all candidates</li></ul>`,
+            
+            org3: `<h2>🔬 Data Warehouse Study Group - Big Data Laboratory</h2><p><strong>Laboratory Member | Aug 2023 – Dec 2024</strong></p><p><strong>Location:</strong> Bandung, West Java, Indonesia (Onsite)</p><h3 style="margin-top:1.5rem; color:var(--mauve)">About:</h3><p>An internal study group focusing on Data Warehouse concepts and implementation.</p><h3 style="margin-top:1.5rem; color:var(--mauve)">Key Activities & Achievements:</h3><ul style="line-height: 2;"><li>Implemented ETL and data modeling using PostgreSQL and dbt in collaborative team projects</li><li>Developed a fundamental learning module used by new participants in subsequent batches</li><li>Gained hands-on experience in data warehousing best practices</li></ul>`,
+            
+            org4: `<h2>🎪 GALAKSI 2023 - HIMA Data Science</h2><p><strong>Student Committee | Sep 2023 – Dec 2023</strong></p><p><strong>Location:</strong> Bandung, West Java, Indonesia (Onsite)</p><h3 style="margin-top:1.5rem; color:var(--mauve)">About:</h3><p>Student initiation program for new Data Science students (class of 2023).</p><h3 style="margin-top:1.5rem; color:var(--mauve)">Key Responsibilities & Achievements:</h3><ul style="line-height: 2;"><li>Managed technical operations and participant engagement throughout the event</li><li>Coordinated with other committees to ensure smooth logistics and session execution</li><li><strong>Maintained >90% active participation rate</strong> and received positive event evaluations</li></ul>`,
+            
+            org5: `<h2>🤝 PKKMB Data Science 2023</h2><p><strong>Coordinator of Liaison Officers | Aug 2023 – Sep 2023</strong></p><p><strong>Location:</strong> Bandung, West Java, Indonesia (Onsite)</p><h3 style="margin-top:1.5rem; color:var(--mauve)">About:</h3><p>Orientation program for new Data Science students (class of 2023).</p><h3 style="margin-top:1.5rem; color:var(--mauve)">Key Responsibilities & Achievements:</h3><ul style="line-height: 2;"><li>Supervised 5 liaison officers assisting over 100 freshmen during the orientation</li><li>Organized duty schedules and communication flow among the LO team</li><li><strong>Improved participant satisfaction to 4.7/5</strong> based on post-event feedback</li></ul>`,
+            
+            org6: `<h2>👥 PKKMB Telkom University 2023</h2><p><strong>Liaison Officer | May 2023 – Oct 2023</strong></p><p><strong>Location:</strong> Bandung, West Java, Indonesia (Onsite)</p><h3 style="margin-top:1.5rem; color:var(--mauve)">About:</h3><p>University-level orientation program for Telkom University freshmen.</p><h3 style="margin-top:1.5rem; color:var(--mauve)">Key Responsibilities & Achievements:</h3><ul style="line-height: 2;"><li>Guided students throughout the orientation program, ensuring smooth communication</li><li>Acted as a bridge between freshmen and the organizing committee to resolve information gaps</li><li>Ensured positive onboarding experience for all new students</li></ul>`,
+            
+            org7: `<h2>🎯 PERMIDSI 2023 - HIMA Data Science</h2><p><strong>Person in Charge (PIC) | Jan 2023 – Mar 2023</strong></p><p><strong>Location:</strong> Bandung, West Java, Indonesia (Onsite)</p><h3 style="margin-top:1.5rem; color:var(--mauve)">About:</h3><p>Digital election event for the HIMA DS chairman (class of 2021).</p><h3 style="margin-top:1.5rem; color:var(--mauve)">Key Responsibilities & Achievements:</h3><ul style="line-height: 2;"><li>Led the overall election process, from debate sessions to online voting</li><li>Managed voting systems and documentation to ensure fairness and transparency</li><li><strong>Increased voter participation to >80%</strong>, ensuring the election's validity and inclusiveness</li></ul>`,
+            
+            org8: `<h2>✍️ Formatur HIMA Data Science</h2><p><strong>Secretary I | Nov 2022 – Feb 2024</strong></p><p><strong>Location:</strong> Bandung, West Java, Indonesia (Onsite)</p><h3 style="margin-top:1.5rem; color:var(--mauve)">About:</h3><p>Founding committee of the Data Science Student Association (HIMA DS).</p><h3 style="margin-top:1.5rem; color:var(--mauve)">Key Responsibilities & Achievements:</h3><ul style="line-height: 2;"><li>Designed the organizational structure, proposals, and legal documents for the formation process</li><li>Archived all official documents as the foundation for faculty approval</li><li><strong>Achieved official recognition of HIMA DS</strong> as the first formal student association for Data Science at Telkom University</li></ul><h3 style="margin-top:1.5rem; color:var(--mauve)">Significance:</h3><p>Played pivotal role in establishing the foundation for Data Science student community at Telkom University.</p>`,
+            
+            org9: `<h2>📝 FEEDS 2022 - HIMA Data Science</h2><p><strong>General Secretary | Nov 2022 – Dec 2022</strong></p><p><strong>Location:</strong> Bandung, West Java, Indonesia (Onsite)</p><h3 style="margin-top:1.5rem; color:var(--mauve)">About:</h3><p>Welcoming event for new Data Science students (class of 2022).</p><h3 style="margin-top:1.5rem; color:var(--mauve)">Key Responsibilities & Achievements:</h3><ul style="line-height: 2;"><li>Managed administrative and logistical needs to ensure all sessions followed the rundown</li><li>Drafted event reports and evaluations for future improvement</li><li><strong>Reached >90% freshman participation</strong> and enhanced engagement in early student activities</li></ul>`,
+            
+            org10: `<h2>🎭 PERFECT (Permib Freedom in Creativity) - PERMIB</h2><p><strong>Event Staff | Nov 2021 – Jun 2022</strong></p><p><strong>Location:</strong> Bandung, West Java, Indonesia (Onsite)</p><h3 style="margin-top:1.5rem; color:var(--mauve)">About:</h3><p>Student organization from Bandung conducting social and educational outreach programs for high school students.</p><h3 style="margin-top:1.5rem; color:var(--mauve)">Main Programs:</h3><ul style="line-height: 2;"><li><strong>Webinar Series:</strong> Organized educational webinars on higher education and career preparation</li><li><strong>Roadshow to High Schools:</strong> Promoted Telkom University and introduced academic programs across 15 high schools in Bandung</li><li><strong>UTBK Try-Out:</strong> Coordinated a nationwide UTBK simulation attended by 500+ students</li><li><strong>Edufair:</strong> Assisted in executing an educational fair connecting universities and students</li></ul>`,
+            
+            org11: `<h2>📋 PKKMB Data Science 2022</h2><p><strong>General Secretary | Jul 2022 – Sep 2022</strong></p><p><strong>Location:</strong> Bandung, West Java, Indonesia (Onsite)</p><h3 style="margin-top:1.5rem; color:var(--mauve)">About:</h3><p>Orientation program for the first batch of Data Science students.</p><h3 style="margin-top:1.5rem; color:var(--mauve)">Key Responsibilities & Achievements:</h3><ul style="line-height: 2;"><li>Prepared official documents, event schedules, and post-event reports</li><li>Collaborated with faculty representatives to ensure timely execution</li><li><strong>Received a 4.8/5 satisfaction rating</strong> from the department for event organization</li></ul>`,
+            
+            pub1: `<h2>📝 IEEE ICICyTA 2024 Publication</h2><p><strong>Enhancing Multiclass Classification of Child Nutritional Status Using KNN and Random Forest with SMOTE</strong></p><p><strong>Conference:</strong> 2024 International Conference on Intelligent Cybernetics Technology & Applications (ICICyTA)</p><p><strong>Conference Date:</strong> December 17, 2024</p><p><strong>Date Added to IEEE Xplore:</strong> March 11, 2025</p><p><strong>Authors:</strong> <span style="color: var(--rose); font-weight: bold;">Aqeela Fathya Najwa (First Author & Presenter)</span>, et al.</p><p><strong>Award:</strong> 🏆 Best Presenter – The 4th ICICyTA 2024</p><p style="margin-top: 1rem;"><a href="https://ieeexplore.ieee.org/document/10912991" target="_blank" rel="noopener" style="color: var(--mauve); text-decoration: underline; font-weight: 600;">🔗 IEEE Xplore Link</a></p><p><a href="https://doi.org/10.1109/ICICYTA64807.2024.10912991" target="_blank" rel="noopener" style="color: var(--chocolate); text-decoration: underline;">📄 DOI: 10.1109/ICICYTA64807.2024.10912991</a></p><h3 style="margin-top:1.5rem; color:var(--mauve)">Description:</h3><p>Published by IEEE, this research investigates the use of the Synthetic Minority Over-sampling Technique (SMOTE) to improve classification accuracy in child nutrition datasets. The study applies K-Nearest Neighbors (KNN) and Random Forest algorithms to evaluate model robustness and class balance performance.</p><h3 style="margin-top:1.5rem; color:var(--mauve)">Abstract:</h3><p>The study addresses data imbalance in child nutritional status prediction using BB/U (Weight-for-Age) and BB/TB (Weight-for-Height) indicators. By applying SMOTE, the models achieved balanced recall between major and minor classes, offering a scalable approach for improving health data analytics.</p><h3 style="margin-top:1.5rem; color:var(--mauve)">Key Results:</h3><ul style="line-height: 2;"><li>Achieved <strong>97.59% accuracy</strong> with Random Forest and <strong>96.66%</strong> with KNN</li><li>Significantly improved recall for minority classes</li><li>Provided actionable insights for data-driven nutrition intervention strategies in Indonesia</li></ul><h3 style="margin-top:1.5rem; color:var(--mauve)">My Contributions:</h3><ul style="line-height: 2;"><li>Served as <strong>First Author and Presenter</strong>, responsible for research design, model implementation, and result validation</li><li>Awarded <strong>Best Presenter</strong> for outstanding paper delivery and contribution to healthcare analytics</li></ul>`,
+            
+            pub2: `<h2>📄 JCSE Journal Publication</h2><p><strong>Enhancing Stunting Prediction for Indonesian Children Using Machine Learning with SMOTE Data Balancing</strong></p><p><strong>Journal:</strong> Journal of Computing Science and Engineering (JCSE)</p><p><strong>Index:</strong> Scopus-Indexed Journal</p><p><strong>Volume:</strong> Vol. 18, No. 4, pp. 203–213 (2024)</p><p><strong>Publication Date:</strong> February 4, 2025</p><p><strong>Authors:</strong> <span style="color: var(--rose); font-weight: bold;">Aqeela Fathya Najwa (First Author)</span>, et al.</p><p style="margin-top: 1rem;"><a href="https://doi.org/10.5626/JCSE.2024.18.4.203" target="_blank" rel="noopener" style="color: var(--chocolate); text-decoration: underline; font-weight: 600;">📄 DOI: 10.5626/JCSE.2024.18.4.203</a></p><h3 style="margin-top:1.5rem; color:var(--mauve)">Description:</h3><p>Published in a Scopus-indexed journal, this study compares the effectiveness of Support Vector Machine (SVM) and Decision Tree algorithms in detecting stunting among Indonesian children. The research emphasizes the critical role of SMOTE data balancing in improving machine learning model accuracy for health prediction.</p><h3 style="margin-top:1.5rem; color:var(--mauve)">Abstract:</h3><p>The research introduces a predictive model to identify stunting risks using real-world health data from community health centers. With SMOTE balancing, both models demonstrated significant performance improvement, validating the need for data preprocessing in imbalanced health datasets.</p><h3 style="margin-top:1.5rem; color:var(--mauve)">Key Results:</h3><ul style="line-height: 2;"><li>Decision Tree achieved <strong>97% F1-score</strong>, outperforming traditional models</li><li>SVM (RBF kernel) improved to <strong>94% F1-score</strong> after applying SMOTE</li><li>Demonstrated that balanced data significantly enhances early stunting detection accuracy</li></ul><h3 style="margin-top:1.5rem; color:var(--mauve)">My Contributions:</h3><ul style="line-height: 2;"><li>Acted as <strong>First Author</strong>, responsible for data preprocessing, model training, and evaluation</li><li>Led manuscript drafting and revision for journal submission and peer review process</li></ul>`,
+            
+            project1: `<h2>❤️ Heart Disease Classification Model</h2><h3 style="margin-top:1.5rem; color:var(--mauve)">Project Overview:</h3><p>Developed comprehensive heart disease classification using Random Forest optimized with Evolutionary Boosting, achieving 86.67% test accuracy.</p><h3 style="margin-top:1.5rem; color:var(--mauve)">Technical Approach:</h3><ul style="line-height: 2;"><li><strong>Algorithm:</strong> Random Forest with Evolutionary Boosting</li><li><strong>Preprocessing:</strong> Data normalization techniques</li><li><strong>Tuning:</strong> Grid Search for optimal parameters</li><li><strong>Evaluation:</strong> Precision-recall metrics</li></ul><h3 style="margin-top:1.5rem; color:var(--mauve)">Technologies:</h3><p>Python, Random Forest, AutoML, Scikit-learn</p>`,
+            
+            project2: `<h2>👶 Multiclass Child Nutrition Classification</h2><h3 style="margin-top:1.5rem; color:var(--mauve)">Project Overview:</h3><p>Built multiclass classification for child nutritional status using BB/U and BB/TB indicators with SMOTE balancing.</p><h3 style="margin-top:1.5rem; color:var(--mauve)">Key Results:</h3><ul style="line-height: 2;"><li>Random Forest with SMOTE: <strong>97.59% accuracy</strong></li><li>Addressed class imbalance effectively</li><li>Supports equitable health interventions</li><li>Published in IEEE ICICyTA 2024</li></ul><h3 style="margin-top:1.5rem; color:var(--mauve)">Technologies:</h3><p>Python, KNN, Random Forest, SMOTE</p>`,
+            
+            project3: `<h2>⛏️ Operational BI Dashboard - Mining Sector</h2><p><strong>Client:</strong> PT Kamalindo Sompurna</p><h3 style="margin-top:1.5rem; color:var(--mauve)">Project Overview:</h3><p>Created integrated BI dashboard for real-time coal production and fuel monitoring.</p><h3 style="margin-top:1.5rem; color:var(--mauve)">Key Features:</h3><ul style="line-height: 2;"><li>Real-time production monitoring</li><li>Fuel consumption tracking</li><li>Multi-source data integration</li><li>Interactive drill-down visualizations</li></ul><h3 style="margin-top:1.5rem; color:var(--mauve)">Business Impact:</h3><ul style="line-height: 2;"><li>Improved operational efficiency</li><li>Enhanced decision-making</li><li>Better resource allocation</li></ul><p><strong>Technologies:</strong> Power BI, SQL, Real-time Analytics</p>`,
+            
+            project4: `<h2>🛒 Marketplace UI/UX Prototype</h2><h3 style="margin-top:1.5rem; color:var(--mauve)">Project Overview:</h3><p>High-fidelity marketplace design for Telkom University students with focus on safe, user-friendly transactions.</p><h3 style="margin-top:1.5rem; color:var(--mauve)">Key Features:</h3><ul style="line-height: 2;"><li>Seamless product search and filtering</li><li>Student-tailored categories</li><li>Product review and rating system</li><li>In-app buyer-seller chat</li><li>Secure transaction mechanisms</li></ul><h3 style="margin-top:1.5rem; color:var(--mauve)">Design Principles:</h3><ul style="line-height: 2;"><li>User-centered approach</li><li>Clean, modern interface</li><li>Mobile-first responsive design</li></ul><p><strong>Tools:</strong> Figma, UI/UX Design, Prototyping</p>`
+        };
+
+        function openModal(type) {
+            document.getElementById('modalBody').innerHTML = modalContent[type] || '<h2>Content not found</h2>';
+            document.getElementById('modal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        window.onclick = function(e) {
+            if (e.target == document.getElementById('modal')) closeModal();
+        }
+    </script>
+</body>
+</html>
